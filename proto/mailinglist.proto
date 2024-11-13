@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package mailinglist;
+
+service MailingListService {
+    rpc AddSubscriber (Subscriber) returns (SubscriberResponse);
+    rpc ListSubscribers (Empty) returns (SubscriberList);
+}
+
+message Subscriber {
+    string email = 1;
+}
+
+message SubscriberResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message SubscriberList {
+    repeated Subscriber subscribers = 1;
+}
+
+message Empty {}
